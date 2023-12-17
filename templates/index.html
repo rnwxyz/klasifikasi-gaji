@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cekgaji</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-light"
+      style="background-color: lightblue"
+    >
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav px-5">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                style="font-size: 32px; padding-left: 8rem"
+                href="/"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                style="font-size: 32px; padding-left: 2rem"
+                href="/klasifikasi"
+                >Klasifikasi</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container" style="padding-top: 2%">
+      <h1>Selamat Datang !</h1>
+      <div
+        style="
+          border-radius: 20px;
+          text-align: justify;
+          font-size: x-large;
+          border: 5px solid #ddd;
+          border-radius: 20px;
+          padding: 20px;
+        "
+      >
+        <p>
+          Selamat datang di website kami yang inovatif untuk mengecek gaji! Kami
+          menyediakan layanan canggih yang memungkinkan pengguna untuk menginput
+          beberapa data diri untuk mendapatkan estimasi gaji apakah lebih dari 7
+          juta atau kurang dari 7 juta.
+          <br /><br />Website ini menggunakan kecerdasan buatan dengan model
+          Artificial Neural Network (ANN) disebut juga model jaringan syaraf
+          tiruan karena cara kerjanya yang menyerupai jaringan syaraf pada
+          manusia. Hasil pengujian menunjukkan tingkat akurasi model mencapai
+          85% yang menunjukkan nilai yang tinggi. <br /><br />Dengan antarmuka
+          yang ramah pengguna, Anda dapat dengan mudah mengisi formulir dengan
+          data diri Anda, dan sistem kami akan memberikan perkiraan gaji
+          berdasarkan model yang kami kembangkan.
+        </p>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        style="margin-top: 20px; float: right"
+        onclick="redirectToAnotherPage()"
+      >
+        Ayo Coba
+      </button>
+    </div>
+
+    <script>
+      function redirectToAnotherPage() {
+        // Replace 'targetPage.html' with the URL of the page you want to redirect to
+        window.location.href = "/klasifikasi";
+      }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

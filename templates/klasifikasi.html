@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cekgaji</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-light"
+      style="background-color: lightblue"
+    >
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav px-5">
+            <li class="nav-item">
+              <a class="nav-link" style="font-size: 32px;padding-left: 8rem;" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="font-size: 32px;padding-left: 2rem;" href="/klasifikasi"
+                >Klasifikasi</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container" style="padding-top: 2%;">
+      <h1>Cek Gajimu</h1>
+      <form method="post" action="/predict">
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+              <label for="umur">Umur:</label>
+              <input
+                type="number"
+                class="form-control"
+                id="umur"
+                placeholder="masukkan umur"
+                name="umur"
+              />
+            </div>
+            <div class="form-group">
+              <label for="th_pendidikan">Tahun Pendidikan:</label>
+              <input
+                type="number"
+                class="form-control"
+                id="th_pendidikan"
+                placeholder="masukkan lama pendidikan"
+                name="th_pendidikan"
+              />
+            </div>
+            <div class="form-group">
+              <label for="berat_akhir">Berat Akhir:</label>
+              <input
+                type="number"
+                class="form-control"
+                id="berat_akhir"
+                placeholder="masukkan berat akhir"
+                name="berat_akhir"
+              />
+            </div>
+            <div class="form-group">
+              <label for="kelas_pekerja">Kelas Pekerja:</label>
+              <select
+                class="form-control"
+                id="kelas_pekerja"
+                name="kelas_pekerja"
+              >
+                <option value="0" selected hidden>Pilih</option>
+                <option value="8">Wiraswasta</option>
+                <option value="3">Pemerintah Lokal</option>
+                <option value="2">Pekerja Bebas Perusahaan</option>
+                <option value="4">Pemerintah Negara</option>
+                <option value="1">Pekerja Bebas Bukan Perusahan</option>
+                <option value="5">Pemerintah Provinsi</option>
+                <option value="7">Tidak Pernah Bekerja</option>
+                <option value="6">Tanpa di Bayar</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label for="status_perkawinan">Status Perkawinan:</label>
+              <select
+                class="form-control"
+                id="status_perkawinan"
+                name="status_perkawinan"
+              >
+                <option value="0" selected hidden>Pilih</option>
+                <option value="5">Menikah</option>
+                <option value="1">Belum Pernah Menikah</option>
+                <option value="3">Cerai</option>
+                <option value="2">Berpisah</option>
+                <option value="4">Janda</option>
+                <option value="6">Menikah LDR</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="pekerjaan">Pekerjaan:</label>
+              <select class="form-control" id="pekerjaan" name="pekerjaan">
+                <option value="0" selected hidden>Pilih</option>
+                <option value="11">Servis Lainnya</option>
+                <option value="2">Ekesekutif Managerial</option>
+                <option value="12">Spesialis</option>
+                <option value="8">Perbaikan Kerajinan</option>
+                <option value="10">Sales</option>
+                <option value="5">Pembersih</option>
+                <option value="6">Pemuka Agama</option>
+                <option value="9">Petani</option>
+                <option value="14">Tech-support</option>
+                <option value="3">Mesin Inspeksi</option>
+                <option value="4">Pekerjaan Lainnya</option>
+                <option value="13">Supir</option>
+                <option value="1">Asisten Rumah Tangga</option>
+                <option value="7">Penjaga</option>
+                <option value="15">Tentara</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="nilai_aset">Nilai Aset:</label>
+              <input
+                type="number"
+                class="form-control"
+                id="nilai_aset"
+                placeholder="masukkan nilai total aset"
+                name="nilai_aset"
+              />
+            </div>
+            <div class="form-group">
+              <label for="jam_kerja">Jam Kerja Per Minggu:</label>
+              <input
+                type="number"
+                class="form-control"
+                id="jam_kerja"
+                placeholder="masukkan jam kerja per minggu"
+                name="jam_kerja"
+              />
+            </div>
+          </div>
+          {% if output is not none %}
+            {% if output == True %}
+              <div class="col">
+                <div class="hasil" style="background-color: red; text-align: center; color: aliceblue; padding-top: 4%; padding-bottom: 5%; border-radius: 10px;">
+                  <h1>Hasil</h1>
+                  <h3>Gajimu Kurang Dari 7 Juta</h3>
+                </div>
+              </div>
+            {% else %}
+              <div class="col">
+                <div class="hasil" style="background-color: green; text-align: center; color: aliceblue; padding-top: 4%; padding-bottom: 5%; border-radius: 10px;">
+                  <h1>Hasil</h1>
+                  <h3>Gajimu Lebih Dari 7 Juta</h3>
+                </div>
+              </div>
+            {% endif %}
+          {% endif %}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
