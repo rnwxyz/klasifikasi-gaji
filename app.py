@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, url_for
 import tensorflow as tf
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
@@ -14,12 +14,21 @@ def home():
 def klasifikasi():
     return render_template('klasifikasi.html', output=None)
 
+@app.route('/predict', methods=['GET'])
+def predictget():
+    return render_template('klasifikasi.html', output=None)
+
 @app.route('/predict',methods=['POST'])
 def predict():
     '''
     For rendering results on HTML GUI
     '''
     int_features = [str(x) for x in request.form.values()]
+    
+    # check jika data kosong default 0
+    for i in range(len(int_features)):
+        if int_features[i] == '':
+            int_features[i] = 0
 
     umur = int(int_features[0])
     thn_pendidikan = int(int_features[1])
@@ -29,6 +38,7 @@ def predict():
     pekerjaan = int(int_features[5])
     nilai_aset = int(int_features[6])
     jam_kerja = int(int_features[7])
+
 
     # make a list
     raw = [umur, berat_akhir, thn_pendidikan, nilai_aset, jam_kerja]
